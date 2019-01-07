@@ -1,0 +1,298 @@
+-injars /Users/uc/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5b397c6c5e8016cb7594fa8a6973bec9/jars/classes.jar(**.class)
+-injars /Users/uc/.gradle/caches/transforms-1/files-1.1/multidex-1.0.2.aar/281e11893285621d6878670614e5e996/jars/classes.jar(**.class)
+-injars /Users/uc/.gradle/caches/transforms-1/files-1.1/support-fragment-27.1.0.aar/f7763019c7a9d4d951e6d6e4f175bdc7/jars/classes.jar(**.class)
+-injars /Users/uc/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-27.1.0.aar/d253f202a2cfd0f48c023f062c870938/jars/classes.jar(**.class)
+-injars /Users/uc/.gradle/caches/transforms-1/files-1.1/support-core-ui-27.1.0.aar/55859fcb68d1ceade6ed466ca7df0e9e/jars/classes.jar(**.class)
+-injars /Users/uc/.gradle/caches/transforms-1/files-1.1/support-core-utils-27.1.0.aar/55236fcb722727e67b414c68a961d0e3/jars/classes.jar(**.class)
+-injars /Users/uc/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-27.1.0.aar/7374492aefd5a7e37a9519a0548a214f/jars/classes.jar(**.class)
+-injars /Users/uc/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.0.aar/937d85b4a82fd38c53f8bdbc748f2921/jars/classes.jar(**.class)
+-injars /Users/uc/.gradle/caches/modules-2/files-2.1/com.android.support/support-annotations/27.1.0/39ded76b5e1ce1c5b2688e1d25cdc20ecee32007/support-annotations-27.1.0.jar(**.class)
+-injars /Users/uc/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.0.aar/9dca505e492dbf6aedf42d11f33a3daf/jars/classes.jar(**.class)
+-injars /Users/uc/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.0.aar/8630780c779d64cb6d4f11cdb77e149a/jars/classes.jar(**.class)
+-injars /Users/uc/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/48ed20d82f2b33e037eeef649a9757f6/jars/classes.jar(**.class)
+-injars /Users/uc/.gradle/caches/modules-2/files-2.1/android.arch.lifecycle/common/1.1.0/edf3f7bfb84a7521d0599efa3b0113a0ee90f85/common-1.1.0.jar(**.class)
+-injars /Users/uc/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/efca246f07b97f41a6fb9d190c9a6a5c/jars/classes.jar(**.class)
+-injars /Users/uc/.gradle/caches/modules-2/files-2.1/android.arch.core/common/1.1.0/8007981f7d7540d89cd18471b8e5dcd2b4f99167/common-1.1.0.jar(**.class)
+-injars /Users/uc/work/Geektime/Chapter13/StorgeTestSample/build/intermediates/javac/release/compileReleaseJavaWithJavac/classes(**.class)
+-injars /Users/uc/work/Geektime/Chapter13/StorgeTestSample/build/intermediates/transforms/mergeJavaRes/release/0.jar(!**.class)
+-outjars /Users/uc/work/Geektime/Chapter13/StorgeTestSample/build/intermediates/transforms/proguard/release/0.jar
+
+-libraryjars /Users/uc/Library/Android/sdk/platforms/android-27/android.jar
+-libraryjars /Users/uc/Library/Android/sdk/build-tools/28.0.2/core-lambda-stubs.jar
+-libraryjars /Users/uc/Library/Android/sdk/platforms/android-27/optional/org.apache.http.legacy.jar
+
+-forceprocessing
+-printusage /Users/uc/work/Geektime/Chapter13/StorgeTestSample/build/outputs/mapping/release/usage.txt
+-dontoptimize
+-printmapping /Users/uc/work/Geektime/Chapter13/StorgeTestSample/build/outputs/mapping/release/mapping.txt
+-dontusemixedcaseclassnames
+-keepattributes *Annotation*,Signature,InnerClasses,EnclosingMethod,*Annotation*,*Annotation*
+-verbose
+-dontnote com.android.vending.licensing.ILicensingService,com.google.vending.licensing.ILicensingService,com.google.android.vending.licensing.ILicensingService,android.support.**,androidx.**,org.apache.http.**,android.net.http.**,java.lang.invoke.**
+-dontwarn android.support.**,androidx.**,android.util.FloatMath
+-printconfiguration /Users/uc/work/Geektime/Chapter13/StorgeTestSample/configuration.txt
+-printseeds /Users/uc/work/Geektime/Chapter13/StorgeTestSample/build/outputs/mapping/release/seeds.txt
+
+
+
+-keep public class com.google.vending.licensing.ILicensingService
+
+-keep public class com.android.vending.licensing.ILicensingService
+
+-keep public class com.google.android.vending.licensing.ILicensingService
+
+# For native methods, see http://proguard.sourceforge.net/manual/examples.html#native
+-keepclasseswithmembers,allowshrinking class * {
+    native <methods>;
+}
+
+# Keep setters in Views so that animations can still work.
+-keepclassmembers public class * extends android.view.View {
+    void set*(***);
+    *** get*();
+}
+
+# We want to keep methods in Activity that could be used in the XML attribute onClick.
+-keepclassmembers class * extends android.app.Activity {
+    public void *(android.view.View);
+}
+
+# For enumeration classes, see http://proguard.sourceforge.net/manual/examples.html#enumerations
+-keepclassmembers enum  * {
+    public static **[] values();
+    public static ** valueOf(java.lang.String);
+}
+
+-keepclassmembers class * extends android.os.Parcelable {
+    public static final ** CREATOR;
+}
+
+-keepclassmembers class **.R$* {
+    public static <fields>;
+}
+
+# Preserve annotated Javascript interface methods.
+-keepclassmembers class * {
+    @android.webkit.JavascriptInterface
+    <methods>;
+}
+
+# Understand the @Keep support annotation.
+-keep class android.support.annotation.Keep
+
+-keep class androidx.annotation.Keep
+
+-keep @android.support.annotation.Keep class * {
+    <fields>;
+    <methods>;
+}
+
+-keep @androidx.annotation.Keep class * {
+    <fields>;
+    <methods>;
+}
+
+-keepclasseswithmembers class * {
+    @android.support.annotation.Keep
+    <methods>;
+}
+
+-keepclasseswithmembers class * {
+    @androidx.annotation.Keep
+    <methods>;
+}
+
+-keepclasseswithmembers class * {
+    @android.support.annotation.Keep
+    <fields>;
+}
+
+-keepclasseswithmembers class * {
+    @androidx.annotation.Keep
+    <fields>;
+}
+
+-keepclasseswithmembers class * {
+    @android.support.annotation.Keep
+    <init>(...);
+}
+
+-keepclasseswithmembers class * {
+    @androidx.annotation.Keep
+    <init>(...);
+}
+
+# Referenced at /Users/uc/work/Geektime/Chapter13/StorgeTestSample/build/intermediates/merged_manifests/release/processReleaseManifest/merged/AndroidManifest.xml:18
+-keep class com.sample.startup.gc.MainActivity {
+    <init>(...);
+}
+
+# Referenced at /Users/uc/work/Geektime/Chapter13/StorgeTestSample/build/intermediates/merged_manifests/release/processReleaseManifest/merged/AndroidManifest.xml:11
+-keep class com.sample.startup.gc.SampleApplication {
+    <init>(...);
+}
+
+# Referenced at /Users/uc/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5b397c6c5e8016cb7594fa8a6973bec9/res/layout/abc_alert_dialog_material.xml:41
+-keep class android.support.v4.widget.NestedScrollView {
+    <init>(...);
+}
+
+# Referenced at /Users/uc/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5b397c6c5e8016cb7594fa8a6973bec9/res/layout/abc_select_dialog_material.xml:23
+-keep class android.support.v7.app.AlertController$RecycleListView {
+    <init>(...);
+}
+
+# Referenced at /Users/uc/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5b397c6c5e8016cb7594fa8a6973bec9/res/layout/abc_action_menu_item_layout.xml:17
+-keep class android.support.v7.view.menu.ActionMenuItemView {
+    <init>(...);
+}
+
+# Referenced at /Users/uc/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5b397c6c5e8016cb7594fa8a6973bec9/res/layout/abc_expanded_menu_layout.xml:17
+-keep class android.support.v7.view.menu.ExpandedMenuView {
+    <init>(...);
+}
+
+# Referenced at /Users/uc/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5b397c6c5e8016cb7594fa8a6973bec9/res/layout/abc_popup_menu_item_layout.xml:17
+# Referenced at /Users/uc/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5b397c6c5e8016cb7594fa8a6973bec9/res/layout/abc_list_menu_item_layout.xml:17
+-keep class android.support.v7.view.menu.ListMenuItemView {
+    <init>(...);
+}
+
+# Referenced at /Users/uc/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5b397c6c5e8016cb7594fa8a6973bec9/res/layout/abc_screen_toolbar.xml:27
+-keep class android.support.v7.widget.ActionBarContainer {
+    <init>(...);
+}
+
+# Referenced at /Users/uc/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5b397c6c5e8016cb7594fa8a6973bec9/res/layout/abc_screen_toolbar.xml:43
+# Referenced at /Users/uc/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5b397c6c5e8016cb7594fa8a6973bec9/res/layout/abc_action_mode_bar.xml:19
+-keep class android.support.v7.widget.ActionBarContextView {
+    <init>(...);
+}
+
+# Referenced at /Users/uc/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5b397c6c5e8016cb7594fa8a6973bec9/res/layout/abc_screen_toolbar.xml:17
+-keep class android.support.v7.widget.ActionBarOverlayLayout {
+    <init>(...);
+}
+
+# Referenced at /Users/uc/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5b397c6c5e8016cb7594fa8a6973bec9/res/layout/abc_action_menu_layout.xml:17
+-keep class android.support.v7.widget.ActionMenuView {
+    <init>(...);
+}
+
+# Referenced at /Users/uc/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5b397c6c5e8016cb7594fa8a6973bec9/res/layout/abc_activity_chooser_view.xml:19
+-keep class android.support.v7.widget.ActivityChooserView$InnerLayout {
+    <init>(...);
+}
+
+# Referenced at /Users/uc/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5b397c6c5e8016cb7594fa8a6973bec9/res/layout/abc_alert_dialog_material.xml:18
+-keep class android.support.v7.widget.AlertDialogLayout {
+    <init>(...);
+}
+
+# Referenced at /Users/uc/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5b397c6c5e8016cb7594fa8a6973bec9/res/layout/abc_alert_dialog_button_bar_material.xml:26
+-keep class android.support.v7.widget.ButtonBarLayout {
+    <init>(...);
+}
+
+# Referenced at /Users/uc/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5b397c6c5e8016cb7594fa8a6973bec9/res/layout/abc_screen_content_include.xml:19
+-keep class android.support.v7.widget.ContentFrameLayout {
+    <init>(...);
+}
+
+# Referenced at /Users/uc/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5b397c6c5e8016cb7594fa8a6973bec9/res/layout/abc_alert_dialog_title_material.xml:45
+-keep class android.support.v7.widget.DialogTitle {
+    <init>(...);
+}
+
+# Referenced at /Users/uc/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5b397c6c5e8016cb7594fa8a6973bec9/res/layout/abc_screen_simple_overlay_action_mode.xml:23
+-keep class android.support.v7.widget.FitWindowsFrameLayout {
+    <init>(...);
+}
+
+# Referenced at /Users/uc/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5b397c6c5e8016cb7594fa8a6973bec9/res/layout/abc_screen_simple.xml:17
+# Referenced at /Users/uc/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5b397c6c5e8016cb7594fa8a6973bec9/res/layout/abc_dialog_title_material.xml:22
+-keep class android.support.v7.widget.FitWindowsLinearLayout {
+    <init>(...);
+}
+
+# Referenced at /Users/uc/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5b397c6c5e8016cb7594fa8a6973bec9/res/layout/abc_search_view.xml:75
+-keep class android.support.v7.widget.SearchView$SearchAutoComplete {
+    <init>(...);
+}
+
+# Referenced at /Users/uc/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5b397c6c5e8016cb7594fa8a6973bec9/res/layout/abc_screen_toolbar.xml:36
+-keep class android.support.v7.widget.Toolbar {
+    <init>(...);
+}
+
+# Referenced at /Users/uc/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5b397c6c5e8016cb7594fa8a6973bec9/res/layout/abc_screen_simple_overlay_action_mode.xml:32
+# Referenced at /Users/uc/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5b397c6c5e8016cb7594fa8a6973bec9/res/layout/abc_screen_simple.xml:25
+-keep class android.support.v7.widget.ViewStubCompat {
+    <init>(...);
+}
+
+# Referenced at /Users/uc/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5b397c6c5e8016cb7594fa8a6973bec9/res/layout/abc_alert_dialog_title_material.xml:56
+# Referenced at /Users/uc/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5b397c6c5e8016cb7594fa8a6973bec9/res/layout/abc_alert_dialog_material.xml:52
+# Referenced at /Users/uc/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/5b397c6c5e8016cb7594fa8a6973bec9/res/layout/abc_alert_dialog_button_bar_material.xml:43
+-keep class android.widget.Space {
+    <init>(...);
+}
+
+# Copyright (C) 2016 The Android Open Source Project
+# 
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+# 
+#      http://www.apache.org/licenses/LICENSE-2.0
+# 
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+# keep setters in VectorDrawables so that animations can still work.
+-keepclassmembers class android.support.graphics.drawable.VectorDrawableCompat$* {
+    void set*(***);
+    *** get*();
+}
+
+# Copyright (C) 2016 The Android Open Source Project
+# 
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+# 
+#      http://www.apache.org/licenses/LICENSE-2.0
+# 
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+# CoordinatorLayout resolves the behaviors of its child components with reflection.
+-keep public class * extends android.support.design.widget.CoordinatorLayout$Behavior {
+    public <init>(android.content.Context,android.util.AttributeSet);
+    public <init>();
+}
+
+-keep class * extends android.arch.lifecycle.ViewModel {
+    <init>();
+}
+
+-keepclassmembers enum  android.arch.lifecycle.Lifecycle$Event {
+    <fields>;
+}
+
+-keep class * extends android.arch.lifecycle.LifecycleObserver
+
+-keep class * extends android.arch.lifecycle.GeneratedAdapter {
+    <init>(...);
+}
+
+-keepclassmembers class ** {
+    @android.arch.lifecycle.OnLifecycleEvent
+    <fields>;
+    @android.arch.lifecycle.OnLifecycleEvent
+    <methods>;
+}
